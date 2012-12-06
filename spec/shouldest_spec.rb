@@ -17,6 +17,7 @@ describe Shouldest do
   it "has a message when failing" do
     failure("Expected 5 to equal 4") { 5.should.equal 4 }
     failure("Expected 5 to not equal 5") { 5.should_not.equal 5 }
+    failure('Expected "5" to equal "4"') { "5".should.equal "4" }
   end
 
   def failure(message = nil)
