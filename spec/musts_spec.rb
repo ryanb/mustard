@@ -116,6 +116,27 @@ describe Musts do
     failure { -> { nil }.must.raise_exception }
   end
 
+  it "allows custom class for matcher" do
+    matcher_class = Struct.new(:subject, :other) do
+      def match?
+        subject == other
+      end
+
+      def failure_message
+        "failure message"
+      end
+
+      def negative_failure_message
+        "negative failure message"
+      end
+    end
+
+    Musts.matcher(:be_equal, matcher_class)
+    5.must.be_equal 5
+    failure("failure message") { 5.must.be_equal 4 }
+    failure("negative failure message") { 5.must_not.be_equal 5 }
+  end
+
   def failure(message = nil)
     failed = false
     begin

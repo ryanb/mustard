@@ -1,6 +1,7 @@
 require "musts/version"
 require "musts/object_extension"
 require "musts/must"
+require "musts/default_matcher"
 
 module Musts
   class Failure < StandardError; end

@@ -1,9 +1,13 @@
 module Musts
   class Must
     def self.matcher(name, *other_names, &block)
+      if block
+        matcher_class = DefaultMatcher.class_for(name, block)
+      else
+        matcher_class = other_names.pop
+      end
       define_method(name) do |*args|
-        result = @subject.instance_exec(*args, &block)
-        _assert(result, name, args)
+        _assert matcher_class.new(@subject, *args, &block)
       end
       other_names.each do |other_name|
         alias_method other_name, name
@@ -17,12 +21,11 @@ module Musts
 
   private
 
-    def _assert(success, name, args)
+    def _assert(matcher)
+      success = matcher.match?
       if @negate && success || !@negate && !success
-        message_action = name.to_s.tr("_", " ")
-        message_action = "not " + message_action if @negate
-        message_action += " " + args.map(&:inspect).join(", ") unless args.empty?
-        raise Musts::Failure.new("Expected #{@subject.inspect} to #{message_action}")
+        message = @negate ? matcher.negative_failure_message : matcher.failure_message
+        raise Failure.new(message)
       end
     end
   end
