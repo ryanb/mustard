@@ -21,7 +21,7 @@ Inside of a test or spec, call `must` or `must_not` on any object followed by a 
 5.must_not.eq 4
 
 5.must.be_greater_than 4
-5.must.be_lt 6
+5.must.be_gt 4
 
 [].must.be :empty? # calls the method to see if it's true
 record.must.be :valid?
