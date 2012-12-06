@@ -14,6 +14,22 @@ describe Shouldest do
     success { 5.should_not.equal 4 }
   end
 
+  it "has a message when failing" do
+    begin
+      5.should.equal 4
+    rescue Shouldest::Failure => exception
+      exception.message.should.equal "Expected 5 to equal 4"
+    end
+  end
+
+  it "has a negative message when failing" do
+    begin
+      5.should_not.equal 5
+    rescue Shouldest::Failure => exception
+      exception.message.should.equal "Expected 5 to not equal 5"
+    end
+  end
+
   def failure
     failed = false
     begin
