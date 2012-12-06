@@ -1,5 +1,5 @@
-module Shouldest
-  class Should
+module Musts
+  class Must
     def self.matcher(name, *other_names, &block)
       define_method(name) do |*args|
         result = @target.instance_exec(*args, &block)
@@ -44,7 +44,7 @@ module Shouldest
         message_action = name.to_s.tr("_", " ")
         message_action = "not " + message_action if @negate
         message_action += " " + args.map(&:inspect).join(", ") unless args.empty?
-        raise Shouldest::Failure.new("Expected #{@target.inspect} to #{message_action}")
+        raise Musts::Failure.new("Expected #{@target.inspect} to #{message_action}")
       end
     end
   end
