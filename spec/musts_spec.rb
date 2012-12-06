@@ -110,6 +110,13 @@ describe Musts do
     end
   end
 
+  it "has match matcher" do
+    "foobar".must.match /foo/
+    failure("Expected \"foo\" to match /bar/") do
+      "foo".must.match /bar/
+    end
+  end
+
   it "has be_close_to matcher" do
     5.00001.must.be_close_to 5.0
     failure("Expected 5.01 to be within 0.001 of 5.0") do

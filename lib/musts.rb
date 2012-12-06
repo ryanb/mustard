@@ -13,6 +13,7 @@ module Musts
   end
 
   matcher(:equal, :eq) { |other| self == other }
+  matcher(:match)      { |other| self =~ other }
   matcher(:be_true)    { self }
   matcher(:be_false)   { !self }
   matcher(:be_nil)     { nil? }
