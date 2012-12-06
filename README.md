@@ -1,5 +1,7 @@
 # Mustard
 
+*Please, pass the mustard!*
+
 An expectation library that adds "must" and "must_not" which can have matchers called on them. Comes with a default set of matchers, and additional matchers can be easily added. Works with RSpec, MiniTest, and Test::Unit. Requires Ruby 1.9 or greater.
 
 This project is based on ideas presented in [this gist](https://gist.github.com/4221051). There I explain some of my issues with existing expectation interfaces.
