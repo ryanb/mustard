@@ -20,6 +20,7 @@ module Shouldest
     matcher(:be_greater_than_or_equal_to, :be_gte) { |other| self >= other }
     matcher(:be_less_than, :be_lt) { |other| self < other }
     matcher(:be_less_than_or_equal_to, :be_lte) { |other| self <= other }
+    matcher(:be) { |method, *args| send(method, *args) }
 
   private
 

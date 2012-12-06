@@ -76,6 +76,16 @@ describe Shouldest do
     end
   end
 
+  it "has be matcher" do
+    [].should.be :empty?
+    failure("Expected [1] to be :empty?") do
+      [1].should.be :empty?
+    end
+    failure("Expected 3 to be :between?, 4, 6") do
+      3.should.be :between?, 4, 6
+    end
+  end
+
   def failure(message = nil)
     failed = false
     begin
