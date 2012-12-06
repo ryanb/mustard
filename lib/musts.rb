@@ -18,6 +18,7 @@ module Musts
   matcher(:be_false)   { !self }
   matcher(:be_nil)     { nil? }
   matcher(:include)    { |*args| include?(*args) }
+  matcher(:respond_to) { |*args| respond_to?(*args) }
 
   matcher(:be_greater_than, :be_gt)              { |other| self > other }
   matcher(:be_greater_than_or_equal_to, :be_gte) { |other| self >= other }
