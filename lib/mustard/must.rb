@@ -1,4 +1,4 @@
-module Musts
+module Mustard
   class Must
     def self.matcher(name, *other_names, &block)
       if block
@@ -24,7 +24,7 @@ module Musts
     def _assert(matcher)
       if @negate == !!matcher.match?
         message = @negate ? matcher.negative_failure_message : matcher.failure_message
-        Musts.fail(message)
+        Mustard.fail(message)
       end
     end
   end

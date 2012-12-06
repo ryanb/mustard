@@ -1,9 +1,9 @@
 require "rubygems"
 require "minitest/autorun"
-require "musts"
+require "mustard"
 
-describe Musts::Failure do
+describe Mustard::Failure do
   it "inherits from MiniTest::Assertion" do
-    (Musts::Failure < MiniTest::Assertion).must.be_true
+    (Mustard::Failure < MiniTest::Assertion).must.be_true
   end
 end

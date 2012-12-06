@@ -1,4 +1,4 @@
-module Musts
+module Mustard
   module ObjectExtension
     def must
       Must.new(self)
@@ -10,4 +10,4 @@ module Musts
   end
 end
 
-Object.send(:include, Musts::ObjectExtension)
+Object.send(:include, Mustard::ObjectExtension)

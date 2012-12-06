@@ -1,4 +1,4 @@
-module Musts
+module Mustard
   class BeMatcher
     def initialize(subject, method, *args)
       @subject = subject

@@ -1,4 +1,4 @@
-# Musts
+# Mustard
 
 An expectation library that adds "must" and "must_not" which can have matchers called on them. Comes with a default set of matchers, and additional matchers can be easily added. Works with RSpec, MiniTest, and Test::Unit. Requires Ruby 1.9 or greater.
 
@@ -8,7 +8,7 @@ An expectation library that adds "must" and "must_not" which can have matchers c
 Add this line to your application's Gemfile and run the `bundle` command.
 
 ```ruby
-gem 'musts', group: :test
+gem 'mustard', group: :test
 ```
 
 
@@ -26,12 +26,12 @@ Inside of a test or spec, call `must` or `must_not` on any object followed by a 
 [].must.be :empty? # calls the method to see if it's true
 record.must.be :valid?
 5.must.be :between?, 6, 7
-# raises Musts::Failure: expected 5 to be between 6 and 7
+# raises Mustard::Failure: expected 5 to be between 6 and 7
 
 -> { 5.bad_call }.must.raise_exception(NoMethodError)
 ```
 
-See [the source code](https://github.com/ryanb/musts/blob/master/lib/musts.rb#L26) for a complete list of matchers and their behavior.
+See [the source code](https://github.com/ryanb/mustard/blob/master/lib/mustard.rb#L26) for a complete list of matchers and their behavior.
 
 
 ### Adding Matchers
@@ -39,7 +39,7 @@ See [the source code](https://github.com/ryanb/musts/blob/master/lib/musts.rb#L2
 Matchers are very easy to add. If a block is passed, it will be executed in the context of the subject.
 
 ```ruby
-Musts.matcher(:be_empty) { empty? }
+Mustard.matcher(:be_empty) { empty? }
 [].must.be_empty?
 [1].must.be_empty? # fail: expected [1] to be empty
 ```
@@ -68,7 +68,7 @@ class BetweenMatcher
   end
 end
 
-Musts.matcher(:be_between, BetweenMatcher)
+Mustard.matcher(:be_between, BetweenMatcher)
 5.must.be_between(5, 7)
 ```
 
@@ -78,7 +78,7 @@ Musts.matcher(:be_between, BetweenMatcher)
 **For RSpec,** add this line to your `spec_helper.rb` if you want to disable other matchers.
 
 ```ruby
-config.expect_with Musts
+config.expect_with Mustard
 ```
 
 **For MiniTest::Spec,** add this line to your `test_helper.rb` if you want to disable existing matchers.

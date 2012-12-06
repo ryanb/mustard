@@ -1,8 +1,8 @@
 require 'rubygems'
 require 'bundler/setup'
 
-require 'musts'
+require 'mustard'
 
 RSpec.configure do |config|
-  config.expect_with Musts
+  config.expect_with Mustard
 end

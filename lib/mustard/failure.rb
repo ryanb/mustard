@@ -1,4 +1,4 @@
-module Musts
+module Mustard
   if defined?(MiniTest::Assertion)
     class Failure < MiniTest::Assertion; end
   elsif defined?(Test::Unit::AssertionFailedError)
@@ -12,8 +12,8 @@ end
 # for it to not show up in RSpec output.
 if defined?(RSpec)
   module RSpec
-    module Musts
-      class Failure < ::Musts::Failure; end
+    module Mustard
+      class Failure < ::Mustard::Failure; end
     end
   end
 end

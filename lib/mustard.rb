@@ -1,26 +1,26 @@
-require "musts/version"
-require "musts/object_extension"
-require "musts/failure"
-require "musts/must"
-require "musts/matchers/default_matcher"
-require "musts/matchers/be_matcher"
-require "musts/matchers/close_matcher"
+require "mustard/version"
+require "mustard/object_extension"
+require "mustard/failure"
+require "mustard/must"
+require "mustard/matchers/default_matcher"
+require "mustard/matchers/be_matcher"
+require "mustard/matchers/close_matcher"
 
-module Musts
+module Mustard
   def self.matcher(*args, &block)
     Must.matcher(*args, &block)
   end
 
   def self.fail(message = nil)
-    if defined?(RSpec::Musts::Failure)
-      raise RSpec::Musts::Failure.new(message)
+    if defined?(RSpec::Mustard::Failure)
+      raise RSpec::Mustard::Failure.new(message)
     else
       raise Failure.new(message)
     end
   end
 
   def fail(*args)
-    Musts.fail(*args)
+    Mustard.fail(*args)
   end
 
   matcher(:equal, :eq) { |other| self == other }

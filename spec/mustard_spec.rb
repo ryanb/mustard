@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Musts do
+describe Mustard do
   it "fails when calling fail with message" do
     failure { fail }
     failure("something went wrong") { fail "something went wrong" }
@@ -10,8 +10,8 @@ describe Musts do
     failure { 5.must.equal 4 }
   end
 
-  it "raises an RSpec::Musts::Failure exception in RSpec" do
-    -> { 5.must.eq 4 }.must.raise_exception(RSpec::Musts::Failure)
+  it "raises an RSpec::Mustard::Failure exception in RSpec" do
+    -> { 5.must.eq 4 }.must.raise_exception(RSpec::Mustard::Failure)
   end
 
   it "does not raise an exception when match succeeds" do
@@ -30,13 +30,13 @@ describe Musts do
   end
 
   it "adds custom matcher" do
-    Musts.matcher(:be_empty) { empty? }
+    Mustard.matcher(:be_empty) { empty? }
     [].must.be_empty
     failure('expected [1] to be empty') { [1].must.be_empty }
   end
 
   it "adds custom matcher with alias" do
-    Musts.matcher(:be_empty, :be_vacant) { empty? }
+    Mustard.matcher(:be_empty, :be_vacant) { empty? }
     failure('expected [1] to be empty') { [1].must.be_vacant }
   end
 
@@ -145,7 +145,7 @@ describe Musts do
 
   it "has raise_exception matcher" do
     -> { raise "foo" }.must.raise_exception
-    -> { raise Musts::Failure }.must.raise_exception(Musts::Failure)
+    -> { raise Mustard::Failure }.must.raise_exception(Mustard::Failure)
     failure { -> { nil }.must.raise_exception }
   end
 
@@ -164,7 +164,7 @@ describe Musts do
       end
     end
 
-    Musts.matcher(:be_equal, matcher_class)
+    Mustard.matcher(:be_equal, matcher_class)
     5.must.be_equal 5
     failure("failure message") { 5.must.be_equal 4 }
     failure("negative failure message") { 5.must_not.be_equal 5 }
@@ -174,7 +174,7 @@ describe Musts do
     failed = false
     begin
       yield
-    rescue Musts::Failure => exception
+    rescue Mustard::Failure => exception
       failed = true
       exception.message.must.equal message if message
     end

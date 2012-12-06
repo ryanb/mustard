@@ -1,4 +1,4 @@
-module Musts
+module Mustard
   class DefaultMatcher
     # This will genereate a subclass of DefaultMatcher to
     # act as the matcher class. This way we can persist the

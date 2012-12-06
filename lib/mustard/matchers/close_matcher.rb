@@ -1,4 +1,4 @@
-module Musts
+module Mustard
   class CloseMatcher
     def initialize(subject, expected, delta = 0.001)
       @subject = subject
