@@ -2,6 +2,7 @@ require "musts/version"
 require "musts/object_extension"
 require "musts/must"
 require "musts/default_matcher"
+require "musts/be_matcher"
 
 module Musts
   class Failure < StandardError; end
@@ -21,7 +22,7 @@ module Musts
   matcher(:be_less_than, :be_lt)                 { |other| self < other }
   matcher(:be_less_than_or_equal_to, :be_lte)    { |other| self <= other }
 
-  matcher(:be) { |method, *args| send(method, *args) }
+  matcher(:be, BeMatcher)
 
   matcher(:raise_exception) do |*args|
     raised = false

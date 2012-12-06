@@ -78,10 +78,10 @@ describe Musts do
 
   it "has be matcher" do
     [].must.be :empty?
-    failure("Expected [1] to be :empty?") do
+    failure("Expected [1] to be empty") do
       [1].must.be :empty?
     end
-    failure("Expected 3 to be :between?, 4, 6") do
+    failure("Expected 3 to be between 4 and 6") do
       3.must.be :between?, 4, 6
     end
   end
