@@ -1,6 +1,6 @@
 # Musts
 
-An expectation library that adds "must" and "must_not" which can have matchers called on them. Comes with a default set of matchers, and additional matchers are easy to add. Works with RSpec and MiniTest. Requires Ruby 1.9 or greater.
+An expectation library that adds "must" and "must_not" which can have matchers called on them. Comes with a default set of matchers, and additional matchers can be easily added. Works with RSpec, MiniTest, and Test::Unit. Requires Ruby 1.9 or greater.
 
 
 ## Installation
