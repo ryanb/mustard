@@ -7,7 +7,7 @@ module Musts
         matcher_class = other_names.pop
       end
       define_method(name) do |*args|
-        _assert matcher_class.new(@subject, *args, &block)
+        _assert matcher_class.new(@subject, *args)
       end
       other_names.each do |other_name|
         alias_method other_name, name
