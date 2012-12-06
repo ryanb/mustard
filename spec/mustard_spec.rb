@@ -95,6 +95,13 @@ describe Mustard do
     end
   end
 
+  it "has have matcher" do
+    [].must_not.have :any?
+    failure("expected [1] to not have any") do
+      [1].must_not.have :any?
+    end
+  end
+
   it "has be_true/false/nil matchers" do
     true.must.be_true
     false.must.be_false
