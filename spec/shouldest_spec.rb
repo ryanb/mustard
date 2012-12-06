@@ -86,6 +86,36 @@ describe Shouldest do
     end
   end
 
+  it "has be_true/false/nil matchers" do
+    true.should.be_true
+    false.should.be_false
+    1.should.be_true
+    nil.should.be_false
+    nil.should.be_nil
+    failure("Expected false to be true") do
+      false.should.be_true
+    end
+    failure("Expected true to be false") do
+      true.should.be_false
+    end
+    failure("Expected false to be nil") do
+      false.should.be_nil
+    end
+  end
+
+  it "has include matcher" do
+    [1, 2, 3].should.include 3
+    failure("Expected [1, 2, 3] to include 4") do
+      [1, 2, 3].should.include 4
+    end
+  end
+
+  it "has raise_exception matcher" do
+    -> { raise "foo" }.should.raise_exception
+    -> { raise Shouldest::Failure }.should.raise_exception(Shouldest::Failure)
+    failure { -> { nil }.should.raise_exception }
+  end
+
   def failure(message = nil)
     failed = false
     begin

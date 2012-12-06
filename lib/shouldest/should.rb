@@ -21,6 +21,21 @@ module Shouldest
     matcher(:be_less_than, :be_lt) { |other| self < other }
     matcher(:be_less_than_or_equal_to, :be_lte) { |other| self <= other }
     matcher(:be) { |method, *args| send(method, *args) }
+    matcher(:be_true) { self }
+    matcher(:be_false) { !self }
+    matcher(:be_nil) { nil? }
+    matcher(:include) { |*args| include?(*args) }
+
+    matcher(:raise_exception) do |*args|
+      raised = false
+      exception = args.first || StandardError
+      begin
+        call
+      rescue exception
+        raised = true
+      end
+      raised
+    end
 
   private
 
