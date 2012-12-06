@@ -5,7 +5,7 @@ module Shouldest
     end
 
     def equal(other)
-      raise Shouldest::Failure
+      raise Shouldest::Failure unless @target == other
     end
   end
 end
