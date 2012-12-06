@@ -23,11 +23,11 @@ module Musts
     end
 
     def failure_message
-      "Expected #{@subject.inspect} to #{message_action}"
+      "expected #{@subject.inspect} to #{message_action}"
     end
 
     def negative_failure_message
-      "Expected #{@subject.inspect} to not #{message_action}"
+      "expected #{@subject.inspect} to not #{message_action}"
     end
 
     def message_action

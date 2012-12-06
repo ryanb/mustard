@@ -24,73 +24,73 @@ describe Musts do
   end
 
   it "has a message when failing" do
-    failure("Expected 5 to equal 4") { 5.must.equal 4 }
-    failure("Expected 5 to not equal 5") { 5.must_not.equal 5 }
-    failure('Expected "5" to equal "4"') { "5".must.equal "4" }
+    failure("expected 5 to equal 4") { 5.must.equal 4 }
+    failure("expected 5 to not equal 5") { 5.must_not.equal 5 }
+    failure('expected "5" to equal "4"') { "5".must.equal "4" }
   end
 
   it "adds custom matcher" do
     Musts.matcher(:be_empty) { empty? }
     [].must.be_empty
-    failure('Expected [1] to be empty') { [1].must.be_empty }
+    failure('expected [1] to be empty') { [1].must.be_empty }
   end
 
   it "adds custom matcher with alias" do
     Musts.matcher(:be_empty, :be_vacant) { empty? }
-    failure('Expected [1] to be empty') { [1].must.be_vacant }
+    failure('expected [1] to be empty') { [1].must.be_vacant }
   end
 
   it "has eq matcher" do
     5.must.eq 5
-    failure("Expected 5 to equal 4") { 5.must.eq 4 }
+    failure("expected 5 to equal 4") { 5.must.eq 4 }
   end
 
   it "has be_greater_than matcher" do
     5.must.be_greater_than 4
-    failure("Expected 5 to be greater than 5") do
+    failure("expected 5 to be greater than 5") do
       5.must.be_greater_than 5
     end
-    failure("Expected 5 to be greater than 5") do
+    failure("expected 5 to be greater than 5") do
       5.must.be_gt 5
     end
   end
 
   it "has be_greater_than_or_equal_to matcher" do
     5.must.be_greater_than_or_equal_to 5
-    failure("Expected 5 to be greater than or equal to 6") do
+    failure("expected 5 to be greater than or equal to 6") do
       5.must.be_greater_than_or_equal_to 6
     end
-    failure("Expected 5 to be greater than or equal to 6") do
+    failure("expected 5 to be greater than or equal to 6") do
       5.must.be_gte 6
     end
   end
 
   it "has be_less_than matcher" do
     5.must.be_less_than 6
-    failure("Expected 5 to be less than 5") do
+    failure("expected 5 to be less than 5") do
       5.must.be_less_than 5
     end
-    failure("Expected 5 to be less than 5") do
+    failure("expected 5 to be less than 5") do
       5.must.be_lt 5
     end
   end
 
   it "has be_less_than_or_equal_to matcher" do
     5.must.be_less_than_or_equal_to 5
-    failure("Expected 5 to be less than or equal to 4") do
+    failure("expected 5 to be less than or equal to 4") do
       5.must.be_less_than_or_equal_to 4
     end
-    failure("Expected 5 to be less than or equal to 4") do
+    failure("expected 5 to be less than or equal to 4") do
       5.must.be_lte 4
     end
   end
 
   it "has be matcher" do
     [].must.be :empty?
-    failure("Expected [1] to be empty") do
+    failure("expected [1] to be empty") do
       [1].must.be :empty?
     end
-    failure("Expected 3 to be between 4 and 6") do
+    failure("expected 3 to be between 4 and 6") do
       3.must.be :between?, 4, 6
     end
   end
@@ -101,44 +101,44 @@ describe Musts do
     1.must.be_true
     nil.must.be_false
     nil.must.be_nil
-    failure("Expected false to be true") do
+    failure("expected false to be true") do
       false.must.be_true
     end
-    failure("Expected true to be false") do
+    failure("expected true to be false") do
       true.must.be_false
     end
-    failure("Expected false to be nil") do
+    failure("expected false to be nil") do
       false.must.be_nil
     end
   end
 
   it "has include matcher" do
     [1, 2, 3].must.include 3
-    failure("Expected [1, 2, 3] to include 4") do
+    failure("expected [1, 2, 3] to include 4") do
       [1, 2, 3].must.include 4
     end
   end
 
   it "has match matcher" do
     "foobar".must.match /foo/
-    failure("Expected \"foo\" to match /bar/") do
+    failure("expected \"foo\" to match /bar/") do
       "foo".must.match /bar/
     end
   end
 
   it "has respond_to matcher" do
     "foobar".must.respond_to :length
-    failure("Expected \"foo\" to respond to :invalid_method") do
+    failure("expected \"foo\" to respond to :invalid_method") do
       "foo".must.respond_to :invalid_method
     end
   end
 
   it "has be_close_to matcher" do
     5.00001.must.be_close_to 5.0
-    failure("Expected 5.01 to be within 0.001 of 5.0") do
+    failure("expected 5.01 to be within 0.001 of 5.0") do
       5.01.must.be_close_to 5.0
     end
-    failure("Expected 6.0 to be within 0.1 of 5.0") do
+    failure("expected 6.0 to be within 0.1 of 5.0") do
       6.0.must.be_close_to 5.0, 0.1
     end
   end

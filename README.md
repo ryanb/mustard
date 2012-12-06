@@ -26,7 +26,7 @@ Inside of a test or spec, call `must` or `must_not` on any object followed by a 
 [].must.be :empty? # calls the method to see if it's true
 record.must.be :valid?
 5.must.be :between?, 6, 7
-# raises Musts::Failure: Expected 5 to be between 6 and 7
+# raises Musts::Failure: expected 5 to be between 6 and 7
 
 -> { 5.bad_call }.must.raise_exception(NoMethodError)
 ```
@@ -41,7 +41,7 @@ Matchers are very easy to add. If a block is passed, it will be executed in the 
 ```ruby
 Musts.matcher(:be_empty) { empty? }
 [].must.be_empty?
-[1].must.be_empty? # fail: Expected [1] to be empty
+[1].must.be_empty? # fail: expected [1] to be empty
 ```
 
 Alternatively, you can pass a class to fully customize the behavior.
@@ -60,11 +60,11 @@ class BetweenMatcher
   end
 
   def failure_message
-    "Expected #{@subject.inspect} to be between #{@min.inspect} and #{@max.inspect}."
+    "expected #{@subject.inspect} to be between #{@min.inspect} and #{@max.inspect}."
   end
 
   def negative_failure_message
-    "Expected #{@subject.inspect} to not be between #{@min.inspect} and #{@max.inspect}."
+    "expected #{@subject.inspect} to not be between #{@min.inspect} and #{@max.inspect}."
   end
 end
 
