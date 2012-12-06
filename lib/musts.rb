@@ -1,13 +1,12 @@
 require "musts/version"
 require "musts/object_extension"
+require "musts/failure"
 require "musts/must"
 require "musts/matchers/default_matcher"
 require "musts/matchers/be_matcher"
 require "musts/matchers/close_matcher"
 
 module Musts
-  class Failure < StandardError; end
-
   def self.matcher(*args, &block)
     Must.matcher(*args, &block)
   end

@@ -22,10 +22,13 @@ module Musts
   private
 
     def _assert(matcher)
-      success = matcher.match?
-      if @negate && success || !@negate && !success
+      if @negate == !!matcher.match?
         message = @negate ? matcher.negative_failure_message : matcher.failure_message
-        raise Failure.new(message)
+        if defined?(RSpec::Musts::Failure)
+          raise RSpec::Musts::Failure.new(message)
+        else
+          raise Failure.new(message)
+        end
       end
     end
   end

@@ -5,6 +5,10 @@ describe Musts do
     failure { 5.must.equal 4 }
   end
 
+  it "raises an RSpec::Musts::Failure exception in RSpec" do
+    -> { 5.must.eq 4 }.must.raise_exception(RSpec::Musts::Failure)
+  end
+
   it "does not raise an exception when match succeeds" do
     5.must.equal 5
   end
