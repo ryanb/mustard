@@ -11,6 +11,18 @@ module Musts
     Must.matcher(*args, &block)
   end
 
+  def self.fail(message = nil)
+    if defined?(RSpec::Musts::Failure)
+      raise RSpec::Musts::Failure.new(message)
+    else
+      raise Failure.new(message)
+    end
+  end
+
+  def fail(*args)
+    Musts.fail(*args)
+  end
+
   matcher(:equal, :eq) { |other| self == other }
   matcher(:match)      { |other| self =~ other }
   matcher(:be_true)    { self }

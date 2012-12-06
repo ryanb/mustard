@@ -24,11 +24,7 @@ module Musts
     def _assert(matcher)
       if @negate == !!matcher.match?
         message = @negate ? matcher.negative_failure_message : matcher.failure_message
-        if defined?(RSpec::Musts::Failure)
-          raise RSpec::Musts::Failure.new(message)
-        else
-          raise Failure.new(message)
-        end
+        Musts.fail(message)
       end
     end
   end

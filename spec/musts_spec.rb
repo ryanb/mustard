@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe Musts do
+  it "fails when calling fail with message" do
+    failure { fail }
+    failure("something went wrong") { fail "something went wrong" }
+  end
+
   it "raises an exception when match fails" do
     failure { 5.must.equal 4 }
   end
