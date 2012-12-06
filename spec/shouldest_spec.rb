@@ -15,27 +15,17 @@ describe Shouldest do
   end
 
   it "has a message when failing" do
-    begin
-      5.should.equal 4
-    rescue Shouldest::Failure => exception
-      exception.message.should.equal "Expected 5 to equal 4"
-    end
+    failure("Expected 5 to equal 4") { 5.should.equal 4 }
+    failure("Expected 5 to not equal 5") { 5.should_not.equal 5 }
   end
 
-  it "has a negative message when failing" do
-    begin
-      5.should_not.equal 5
-    rescue Shouldest::Failure => exception
-      exception.message.should.equal "Expected 5 to not equal 5"
-    end
-  end
-
-  def failure
+  def failure(message = nil)
     failed = false
     begin
       yield
-    rescue Shouldest::Failure
+    rescue Shouldest::Failure => exception
       failed = true
+      exception.message.should.equal message if message
     end
     raise "match did not fail" unless failed
   end
