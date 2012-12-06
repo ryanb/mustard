@@ -9,6 +9,11 @@ describe Shouldest do
     success { 5.should.equal 5 }
   end
 
+  it "negates with should_not" do
+    failure { 5.should_not.equal 5 }
+    success { 5.should_not.equal 4 }
+  end
+
   def failure
     failed = false
     begin
