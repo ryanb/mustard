@@ -31,7 +31,7 @@ record.must.be :valid?
 -> { 5.bad_call }.must.raise_exception(NoMethodError)
 ```
 
-See the source code for a complete list of matchers and their behavior.
+See [the source code](https://github.com/ryanb/musts/blob/master/lib/musts.rb#L26) for a complete list of matchers and their behavior.
 
 
 ### Adding Matchers
