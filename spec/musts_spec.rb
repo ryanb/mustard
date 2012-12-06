@@ -110,6 +110,16 @@ describe Musts do
     end
   end
 
+  it "has be_close_to matcher" do
+    5.00001.must.be_close_to 5.0
+    failure("Expected 5.01 to be within 0.001 of 5.0") do
+      5.01.must.be_close_to 5.0
+    end
+    failure("Expected 6.0 to be within 0.1 of 5.0") do
+      6.0.must.be_close_to 5.0, 0.1
+    end
+  end
+
   it "has raise_exception matcher" do
     -> { raise "foo" }.must.raise_exception
     -> { raise Musts::Failure }.must.raise_exception(Musts::Failure)

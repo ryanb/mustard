@@ -3,7 +3,7 @@ module Musts
     # This will genereate a subclass of DefaultMatcher to
     # act as the matcher class. This way we can persist the
     # name of the matcher and the block of behavior.
-    def self.class_for(name, behavior)
+    def self.subclass_for(name, behavior)
       klass = Class.new(self)
       class << klass
         attr_accessor :name, :behavior

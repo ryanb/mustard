@@ -2,7 +2,7 @@ module Musts
   class Must
     def self.matcher(name, *other_names, &block)
       if block
-        matcher_class = DefaultMatcher.class_for(name, block)
+        matcher_class = DefaultMatcher.subclass_for(name, block)
       else
         matcher_class = other_names.pop
       end
