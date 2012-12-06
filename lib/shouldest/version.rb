@@ -1,0 +1,3 @@
+module Shouldest
+  VERSION = "0.0.1"
+end
