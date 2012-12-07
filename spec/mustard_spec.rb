@@ -45,6 +45,23 @@ describe Mustard do
     failure("expected 5 to equal 4") { 5.must.eq 4 }
   end
 
+  it "has == matcher" do
+    5.must == 5
+    failure("expected 5 to equal 4") { 5.must == 4 }
+  end
+
+  it "has != matcher" do
+    5.must != 4
+    failure("expected 5 to not equal 5") { 5.must != 5 }
+  end
+
+  it "has =~ matcher" do
+    "foobar".must =~ /foo/
+    failure("expected \"foo\" to match /bar/") do
+      "foo".must =~ /bar/
+    end
+  end
+
   it "has be_greater_than matcher" do
     5.must.be_greater_than 4
     failure("expected 5 to be greater than 5") do
