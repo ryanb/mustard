@@ -23,8 +23,9 @@ module Mustard
     Mustard.fail(*args)
   end
 
-  matcher(:equal, :eq) { |other| self == other }
-  matcher(:match)      { |other| self =~ other }
+  matcher(:equal, :eq, :==)  { |other| self == other }
+  matcher(:not_equal, :'!=') { |other| self != other }
+  matcher(:match, :=~)       { |other| self =~ other }
   matcher(:be_true)    { self }
   matcher(:be_false)   { !self }
   matcher(:be_nil)     { nil? }
