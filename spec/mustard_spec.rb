@@ -40,6 +40,11 @@ describe Mustard do
     failure('expected [1] to be empty') { [1].must.be_vacant }
   end
 
+  it "adds custom matcher alias without block" do
+    Mustard.matcher_alias(:empty?, :not_have_anything_in)
+    failure('expected [1] to not have anything in') { [1].must.not_have_anything_in }
+  end
+
   it "has eq matcher" do
     5.must.eq 5
     failure("expected 5 to equal 4") { 5.must.eq 4 }

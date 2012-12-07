@@ -12,6 +12,12 @@ module Mustard
     Must.matcher(*args, &block)
   end
 
+  def self.matcher_alias(method, *aliases)
+    Must.matcher(*aliases) do |*args|
+      self.send(method, *args)
+    end
+  end
+
   def self.fail(message = nil)
     if defined?(RSpec::Mustard::Failure)
       raise RSpec::Mustard::Failure.new(message)
@@ -24,18 +30,20 @@ module Mustard
     Mustard.fail(*args)
   end
 
-  matcher(:equal, :eq) { |other| self == other }
-  matcher(:match)      { |other| self =~ other }
-  matcher(:be_true)    { self }
-  matcher(:be_false)   { !self }
-  matcher(:be_nil)     { nil? }
-  matcher(:include)    { |*args| include?(*args) }
-  matcher(:respond_to) { |*args| respond_to?(*args) }
+  matcher(:be_true)  { self }
+  matcher(:be_false) { !self }
 
-  matcher(:be_greater_than, :be_gt)              { |other| self > other }
-  matcher(:be_greater_than_or_equal_to, :be_gte) { |other| self >= other }
-  matcher(:be_less_than, :be_lt)                 { |other| self < other }
-  matcher(:be_less_than_or_equal_to, :be_lte)    { |other| self <= other }
+  matcher_alias(:==, :equal, :eq)
+  matcher_alias(:=~, :match)
+  matcher_alias(:nil?, :be_nil)
+
+  matcher_alias(:include?, :include)
+  matcher_alias(:respond_to?, :respond_to)
+
+  matcher_alias(:>,  :be_greater_than, :be_gt)
+  matcher_alias(:>=, :be_greater_than_or_equal_to, :be_gte)
+  matcher_alias(:<,  :be_less_than, :be_lt)
+  matcher_alias(:<=, :be_less_than_or_equal_to, :be_lte)
 
   matcher(:be, BeMatcher)
   matcher(:be_close_to, CloseMatcher)
