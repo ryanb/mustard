@@ -5,6 +5,7 @@ require "mustard/must"
 require "mustard/matchers/default_matcher"
 require "mustard/matchers/be_matcher"
 require "mustard/matchers/close_matcher"
+require "mustard/matchers/have_matcher"
 
 module Mustard
   def self.matcher(*args, &block)
@@ -38,6 +39,8 @@ module Mustard
 
   matcher(:be, BeMatcher)
   matcher(:be_close_to, CloseMatcher)
+
+  matcher(:have, HaveMatcher)
 
   matcher(:raise_exception) do |*args|
     raised = false
