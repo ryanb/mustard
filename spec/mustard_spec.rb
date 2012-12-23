@@ -177,6 +177,12 @@ describe Mustard do
     failure("negative failure message") { 5.must_not.be_equal 5 }
   end
 
+  describe "RSpec subject" do
+    subject { 1 }
+
+    it { must.equal 1 }
+  end
+
   def failure(message = nil)
     failed = false
     begin
