@@ -1,3 +1,7 @@
+# Unmaintained
+
+The Mustard gem is **no longer maintained**. Feel free to fork this project.
+
 # Mustard
 
 *Please, pass the mustard!*
